@@ -39,7 +39,7 @@ class JogoAdivinhacao:
 
     def obter_palpite(self): # esse método é responsável por pedir ao jogador que digite um nummero, Verificar se o número esta dentro do intervalo.
         while True:
-            print("###### Adivinha o número ######")
+            print("###### 🎰Adivinha o número🎰 ######")
             palpite = int(input(f"Tentatativa {self.tentativas + 1}: Digite um número entre {self.minimo} e {self.maximo}: "))
             
             if self.minimo <= palpite <= self.maximo:
@@ -66,8 +66,8 @@ class JogoAdivinhacao:
      
 
     def jogar(self):
-        print("\nBem-vindo ao Jogo de Adivinhação!")
-        print(f"Tente adivinhar o número entre {self.minimo} e {self.maximo}.")
+        print("\n🤩Bem-vindo ao Jogo de Adivinhação!🤩")
+        print(f"🤷Tente adivinhar o número entre🤷 {self.minimo} e {self.maximo}.")
         print(f"Você tem {self.max_tentativas} tentativas.\n")
 
         while self.tentativas < self.max_tentativas:
@@ -77,18 +77,29 @@ class JogoAdivinhacao:
             resultado = self.verificar_palpite(palpite)
             
             if resultado == "acertou":
-                print(f"\n Parabéns ! Vocé acertou o numero {self.numero_secreto} em {self.tentativas} tentativas.")
+                print(f"\n 🥳Parabéns ! Vocé acertou o numero {self.numero_secreto} em {self.tentativas} tentativas.🥳")
                 break
             
             elif resultado == "maior":
-                print(f"O numero é MAIOR.\n")
+                print(f"🔼O numero é MAIOR.🔼\n")
             
             else:
-                print("O numero secreto é MENOR.\n")
+                print("🔽O numero secreto é MENOR.🔽\n")
 
             
             if self.tentativas == self.max_tentativas and resultado != "acertou":
-                print(f"\n Fim de jogo! O número secreto era {self.numero_secreto}.")
+                print(f"\n 👻 Fim de jogo! O número secreto era {self.numero_secreto}.👻")
+        
+if __name__ == "__main__":
+    while True:
+        jogo = JogoAdivinhacao()
+        jogo.jogar()
+
+        jogar_novamente = input("\nQuer jogar novamente? (s/n): ").strip().lower()
+        if jogar_novamente != "s":
+            print("Obrigado por jogar! Até a próxima! 👋")
+            break
+
 
     
 # Executar o jogo
